@@ -1,0 +1,42 @@
+@import "./variables.scss";
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,500,700');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:500');
+@import "../../../node_modules/bulma/sass/utilities/_all";
+@import "../../../node_modules/bulma/sass/base/_all";
+@import "../../../node_modules/bulma/sass/components/dropdown.sass";
+@import "../../../node_modules/bulma/sass/elements/button";
+@import "../../../node_modules/bulma/sass/elements/form";
+@import "../../../node_modules/bulma/sass/elements/icon";
+@import "../../../node_modules/bulma/sass/components/modal";
+@import "../../../node_modules/bulma/sass/elements/tag";
+@import "../../../node_modules/animate.sass/scss/animate";
+@import "../../../node_modules/node-waves/src/scss/waves";
+
+$use-fadeIn: true;
+$use-fadeOut: true;
+$use-flipInY: true;
+
+html, body {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	display: block;
+	font-family: $font-stack;
+	overflow: hidden;
+
+	#dv-app {
+		.has-margin-left {
+			margin-left: $default-margin;
+		}
+
+		.has-margin-right {
+			margin-right: $default-margin;
+		}
+
+		.is-default {
+			background-color: $secondary-color;
+		}
+	}
+
+}
