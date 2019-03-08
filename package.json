@@ -58,6 +58,7 @@
     "bulma": "^0.7.4",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
+    "common-shakeify": "^0.6.0",
     "cssnano": "^4.1.0",
     "envify": "^4.1.0",
     "eslint-plugin-vue": "^4.7.1",

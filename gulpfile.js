@@ -11,7 +11,7 @@
 	const cond = require("gulp-cond");
 	const fs = require("fs");
 	const fse = require("fs-extra");
-	const uglify = require("gulp-uglify");
+	const commonShake = require("common-shakeify");
 	const imagemin = require("gulp-imagemin");
 	const rename = require("gulp-rename");
 	const cssnano = require("cssnano");
@@ -246,18 +246,20 @@
 
 	gulp.task("js", function (done) {
 		modulePath = currentContext ? currentContext : ["client/" + (argv.module || argv.m || currentContext || "main") + "_module"].join();
+
+		let plugins = isProd ? [commonShake] : [];
 		browserifyInstance = browserify({
 			"entries": modulePath + "/js/main.js",
 			"noParse": ["vue.js"],
-			"plugin": argv.w || argv.watch ? [watchify] : [],
+			"plugin": argv.w || argv.watch ? plugins.concat([watchify]) : plugins,
 			"cache": {},
 			"packageCache": {},
 			"debug": !isProd
 		}).transform("envify", {
 			"global": true,
 			"NODE_ENV": process.env.NODE_ENV,
-			"transform": [["babelify", { "presets": ["@babel/preset-env"] }]]
 		})
+			.transform(babelify)
 			.transform(vueify)
 			.on("update", function () {
 				methods.bundleJS(done);
