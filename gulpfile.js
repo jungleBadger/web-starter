@@ -259,8 +259,8 @@
 			"global": true,
 			"NODE_ENV": process.env.NODE_ENV,
 		})
-			.transform(babelify)
 			.transform(vueify)
+			.transform(babelify, {extensions: [".js", ".es", ".vue"]})
 			.on("update", function () {
 				methods.bundleJS(done);
 			});
